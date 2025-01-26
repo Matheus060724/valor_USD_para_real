@@ -31,3 +31,72 @@ def ConnecetDataBase():
                     caso contrário, retorna None.
     """
     # Código para estabelecer a conexão...
+```
+
+### 2. coleta de valores
+
+```python
+import requests
+from datetime import datetime
+ 
+def Values(connectiondatabase):
+    """
+    Insere o valor da cotação do USD em relação ao BRL no banco de dados.
+
+    Esta função faz uma requisição à API para obter a cotação atual do USD em relação ao BRL
+    e insere esses dados no banco de dados na tabela 'valores'. A data e hora da cotação também
+    são registradas.
+
+    Args:
+        connectiondatabase: Objeto de conexão com o banco de dados MySQL.
+
+    Returns:
+        None
+    """
+    # Código para inserir os dados...
+```
+
+### 3. seleção de dados
+
+```python
+import pandas as pd
+
+def SelectDataBase(connectiondatabase):
+    """
+    Seleciona todos os registros da tabela 'valores' no banco de dados.
+
+    Esta função executa uma consulta SQL para selecionar todos os dados da tabela 'valores'
+    e os armazena em um DataFrame do pandas. Se ocorrer um erro durante a execução da consulta,
+    ele será capturado e exibido.
+
+    Args:
+        connectiondatabase: Objeto de conexão com o banco de dados MySQL.
+
+    Returns:
+        pd.DataFrame: Um DataFrame contendo os dados selecionados da tabela 'valores'.
+                      Retorna None se ocorrer um erro durante a seleção.
+    """
+    # Código para selecionar os dados...
+```
+
+### 4. Fechamento da Conexão
+
+```python
+def CloseDataBase(connectiondatabase):
+    """
+    Fecha a conexão com o banco de dados MySQL.
+
+    Esta função verifica se a conexão com o banco de dados está ativa e, se estiver,
+    fecha a conexão. Se ocorrer um erro ao fechar a conexão, ele será capturado e exibido.
+
+    Args:
+        connectiondatabase: Objeto de conexão com o banco de dados MySQL.
+
+    Returns:
+        None
+    """
+    # Código para fechar a conexão...
+```
+
+
+
