@@ -31,7 +31,9 @@ def SelectDataBase(connectiondatabase):
         # Cria um DataFrame do pandas a partir dos dados obtidos
         df = pd.DataFrame(data = Answer,
                         columns=(["ID", "Valor", "Data"]))
-    
+
+        df = df.set_index("ID")
+
     # Captura e exibe erros relacionados à execução da consulta SQL
     except Error as e:
         print(f"Erro ao selecionar os dados: {e}")
