@@ -20,6 +20,7 @@ def SelectDataBase(connectiondatabase):
  """
      
     # Cria um cursor para executar comandos SQL
+    global df
     Cursor = connectiondatabase.cursor()
 
     try:
