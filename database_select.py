@@ -18,9 +18,9 @@ def SelectDataBase(connectiondatabase):
             pd.DataFrame: Um DataFrame contendo os dados selecionados da tabela 'valores'.
                         Retorna None se ocorrer um erro durante a seleção.
  """
-     
+    #Transformando a variavel em global para ser possivel transformar em uma função para o dataframe
+    global Answer
     # Cria um cursor para executar comandos SQL
-    global df
     Cursor = connectiondatabase.cursor()
 
     try:
@@ -28,12 +28,6 @@ def SelectDataBase(connectiondatabase):
         CodeSQL = "SELECT * FROM test_cotacao.valores;"
         Cursor.execute(CodeSQL) # Executa a consulta SQL com os dados obtidos da API
         Answer = Cursor.fetchall() # Obtém todos os resultados da consulta
-
-        # Cria um DataFrame do pandas a partir dos dados obtidos
-        df = pd.DataFrame(data = Answer,
-                        columns=(["ID", "Valor", "Data"]))
-
-        df = df.set_index("ID")
 
     # Captura e exibe erros relacionados à execução da consulta SQL
     except Error as e:
@@ -43,9 +37,14 @@ def SelectDataBase(connectiondatabase):
     finally:
         if connectiondatabase.is_connected():
             Cursor.close()
-    
-    return df # Retorna o DataFrame com os dados selecionados
 
+def TablePandas(Answer):
+    df = pd.DataFrame(data=Answer,
+                      columns=(["ID", "Valor", "Data"]))
+
+    df = df.set_index("ID")
+
+    return df
 
 def CloseDataBase(connectiondatabase):
     """
@@ -73,9 +72,10 @@ def CloseDataBase(connectiondatabase):
 
 # Estabelece a conexão com o banco de dados
 ConnectionDataBase = connect.ConnecetDataBase()
-
 # Seleciona os valores da cotação no banco de dados
-print(SelectDataBase(ConnectionDataBase))
+SelectDataBase(ConnectionDataBase)
+#Gerando dataframe com pandas
+print(TablePandas(Answer))
 
 # Encerra a conexão com o banco de dados
 CloseDataBase(ConnectionDataBase)
