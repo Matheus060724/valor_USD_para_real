@@ -39,6 +39,24 @@ def SelectDataBase(connectiondatabase):
             Cursor.close()
 
 def TablePandas(Answer):
+    """
+     Cria um DataFrame Pandas a partir de uma lista de dicionários e define a coluna 'ID' como índice do DataFrame.
+
+     Parâmetros:
+     Answer (list ou iterável): Lista de dicionários ou formato iterável contendo os dados. Cada elemento da lista deve ter as chaves 'ID', 'Valor' e 'Data'.
+
+     Variáveis Globais:
+     df (pandas.DataFrame): DataFrame global criado ou atualizado pela função.
+
+     Estrutura do DataFrame:
+     O DataFrame criado terá as colunas 'ID', 'Valor' e 'Data'.
+
+     Retorna:
+     df (pandas.DataFrame): DataFrame com 'ID' como índice.
+     """
+
+    global df
+
     df = pd.DataFrame(data=Answer,
                       columns=(["ID", "Valor", "Data"]))
 
