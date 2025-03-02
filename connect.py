@@ -17,7 +17,7 @@ def ConnecetDataBase():
         # Tenta estabelecer a conexão com o banco de dados
         Connection = mysql.connector.connect(
             user = "root",
-            password = "2405Mmp@6",
+            password = "*********",
             host = "localhost",
             database = "test_cotacao",
             auth_plugin="mysql_native_password"  # Especificando o plugin
